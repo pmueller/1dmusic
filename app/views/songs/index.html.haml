@@ -1,0 +1,8 @@
+= link_to 'New Song', new_song_path
+.songs-list
+  - @songs.each do |song|
+    .song
+      %h1= song.title
+      .song-info
+        %p= pretty_key song.key
+        %p= "#{song.generations.size} generations"
