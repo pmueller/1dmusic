@@ -1,0 +1,5 @@
+.song
+  %h1= song.title
+  .song-info.pull-right
+    .song-item= pretty_key song.key
+    .song-item= "#{song.generations.size} generations"

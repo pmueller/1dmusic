@@ -9,8 +9,8 @@
   %body
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
-        .container
-          .brand A New Kind of Music 
+        .container#main-header
+          = link_to "A New Kind of Music", root_path, class: "brand"
 
     .main-container
       = yield

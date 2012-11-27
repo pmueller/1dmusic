@@ -1,8 +1,7 @@
-= link_to 'New Song', new_song_path
-.songs-list
+= link_to new_song_path, class: "pull-right btn btn-large btn-primary" do
+  %i.icon-plus.icon-white
+  New Song
+
+.songs-list.clear
   - @songs.each do |song|
-    .song
-      %h1= song.title
-      .song-info
-        %p= pretty_key song.key
-        %p= "#{song.generations.size} generations"
+    = render song

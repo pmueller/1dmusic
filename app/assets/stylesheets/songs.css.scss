@@ -1,3 +1,19 @@
-// Place all the styles related to the Songs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.song-list {
+  width: 550px;
+}
+
+.song {
+  width: 500px;
+  padding: 20px;
+  margin: 10px auto;
+
+  h1 {
+    font-size: 2.2em;
+  }
+
+  .song-info {
+    .song-item {
+       
+    }
+  }
+}
