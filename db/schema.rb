@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127191933) do
+ActiveRecord::Schema.define(:version => 20121127192712) do
+
+  create_table "rules", :force => true do |t|
+    t.string   "to_match"
+    t.string   "new_cell"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "songs", :force => true do |t|
     t.string   "title"

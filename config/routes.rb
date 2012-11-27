@@ -1,4 +1,6 @@
 NewMusic::Application.routes.draw do
+  resources :rules
+
   resources :songs
 
   # The priority is based upon order of creation:

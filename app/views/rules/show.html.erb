@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>To match:</b>
+  <%= @rule.to_match %>
+</p>
+
+<p>
+  <b>New cell:</b>
+  <%= @rule.new_cell %>
+</p>
+
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>
