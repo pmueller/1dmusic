@@ -4,11 +4,10 @@
 
   .song-show-container
     .song-show-content.pull-left
-      .song-show-generations
+      .song-show-generations.clearfix
         - @song.generations.each do |generation|
-          = div_for generation do
-            = render generation, generation: generation
-      .actions
+          = render generation, generation: generation
+      .actions.clear
         = link_to "#", class: "btn btn-primary" do
           %i.icon-play.icon-white
           Play

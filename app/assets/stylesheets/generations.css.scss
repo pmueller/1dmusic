@@ -1,3 +1,10 @@
-// Place all the styles related to the Generations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.generation {
+}
+
+.cell {
+  width: 29px;
+  height: 29px;
+  border: 2px solid rgba(0, 0, 0, .2);
+  margin: 0;
+  float: left;
+}
