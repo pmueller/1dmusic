@@ -1,4 +1,6 @@
 NewMusic::Application.routes.draw do
+  resources :generations
+
   resources :rules
 
   resources :songs

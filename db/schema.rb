@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127192712) do
+ActiveRecord::Schema.define(:version => 20121127193200) do
+
+  create_table "generations", :force => true do |t|
+    t.string   "current"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "rules", :force => true do |t|
     t.string   "to_match"

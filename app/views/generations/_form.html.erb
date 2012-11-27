@@ -1,0 +1,21 @@
+<%= form_for(@generation) do |f| %>
+  <% if @generation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@generation.errors.count, "error") %> prohibited this generation from being saved:</h2>
+
+      <ul>
+      <% @generation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :current %><br />
+    <%= f.text_field :current %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

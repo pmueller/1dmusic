@@ -1,0 +1,23 @@
+<h1>Listing generations</h1>
+
+<table>
+  <tr>
+    <th>Current</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @generations.each do |generation| %>
+  <tr>
+    <td><%= generation.current %></td>
+    <td><%= link_to 'Show', generation %></td>
+    <td><%= link_to 'Edit', edit_generation_path(generation) %></td>
+    <td><%= link_to 'Destroy', generation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Generation', new_generation_path %>

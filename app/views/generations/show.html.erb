@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Current:</b>
+  <%= @generation.current %>
+</p>
+
+
+<%= link_to 'Edit', edit_generation_path(@generation) %> |
+<%= link_to 'Back', generations_path %>
