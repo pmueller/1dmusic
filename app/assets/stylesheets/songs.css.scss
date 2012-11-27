@@ -19,7 +19,7 @@
 
 .song {
   width: 500px;
-  padding: 20px;
+  padding: 10px 20px;
   margin: 10px auto;
   border: 1px solid rgba(0, 0, 0, .3);
   background-color: rgba(255, 255, 255, .8);
@@ -35,10 +35,42 @@
 
   .song-info {
     position: absolute;
-    top: 16px;
+    top: 7px;
     right: 20px;
     .song-item {
        
     }
+  }
+}
+
+.song-show-title h1 {
+  color: #08c;
+}
+
+.song-show-container {
+  padding: 10px;
+  margin-top: 10px;
+
+  .song-show-content {
+    width: 400px;
+  }
+
+  .song-show-info {
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    padding-left: 20px;
+    width: 200px;
+
+    .info-field {
+      margin: 10px 0;
+
+      select {
+        width: 220px;
+      }
+    }
+
+    #open-rulebook-btn {
+      width: 200px;
+    }
+
   }
 }

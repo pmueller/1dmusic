@@ -1,0 +1,17 @@
+.well.clearfix
+  .song-show-title
+    %h1= @song.title
+
+  .song-show-container
+    .song-show-content.pull-left
+      Content here
+    .song-show-info.pull-right
+      .info-field
+        = link_to "#", class: "btn btn-danger", id: "open-rulebook-btn" do
+          %i.icon-book.icon-white
+          Open Rulebook
+      .info-field
+        = select(:song, :key, [["C Major", "CM"], ["C Minor", "Cm"]])
+      .info-field
+        Generations per Step
+        = text_field_tag(:generations_per_step)
