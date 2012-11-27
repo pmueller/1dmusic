@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127194901) do
+ActiveRecord::Schema.define(:version => 20121127211005) do
 
   create_table "generations", :force => true do |t|
     t.string   "current"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20121127194901) do
 
   create_table "songs", :force => true do |t|
     t.string   "title"
-    t.string   "key"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "key",        :default => "CM"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
 end
