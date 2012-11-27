@@ -21,7 +21,7 @@
           %i.icon-book.icon-white
           Open Rulebook
       .info-field
-        = select(:song, :key, [["C Major", "CM"], ["C Minor", "Cm"]])
+        = select(:song, :key, [["C Major", "CM"], ["C Minor", "Cm"]], {}, { data: { sid: @song.id } } )
       .info-field
         Generations per Step
-        = text_field_tag(:generations_per_step)
+        = text_field_tag(:generations_per_step, "1")
