@@ -1,7 +1,9 @@
-= link_to new_song_path, class: "pull-right btn btn-large btn-primary" do
-  %i.icon-plus.icon-white
-  New Song
+.song-actions
+  = link_to new_song_path, class: "pull-right btn btn-large btn-primary" do
+    %i.icon-plus.icon-white
+    New Song
 
 .songs-list.clear
   - @songs.each do |song|
-    = render song
+    = link_to song do
+      = render song

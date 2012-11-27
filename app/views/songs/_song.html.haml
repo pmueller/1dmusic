@@ -1,5 +1,5 @@
-.song
+.song.clearfix
   %h1= song.title
   .song-info.pull-right
-    .song-item= pretty_key song.key
-    .song-item= "#{song.generations.size} generations"
+    .song-item.label.label-warning= pretty_key song.key
+    .song-item.label.label-success= "#{song.generations.size} generations"

@@ -1,5 +1,6 @@
 body {
   padding-top: 60px;
+  background-image: url("bg-texture.png");
 }
 
 #main-header {
@@ -14,3 +15,10 @@ body {
 .clear {
   clear: both;
 }
+
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }

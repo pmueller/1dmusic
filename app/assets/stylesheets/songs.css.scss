@@ -1,17 +1,42 @@
-.song-list {
+.song-actions {
   width: 550px;
+  margin: 0 auto;
+}
+
+.songs-list {
+  margin: 0 auto;
+  padding: 10px;
+  width: 550px;
+
+  a {
+    //color: black;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .song {
   width: 500px;
   padding: 20px;
   margin: 10px auto;
+  border: 1px solid rgba(0, 0, 0, .3);
+  background-color: rgba(255, 255, 255, .8);
+  clear: both;
+
+  position: relative;
 
   h1 {
     font-size: 2.2em;
+    font-weight: normal;
+    color: #08c;
   }
 
   .song-info {
+    position: absolute;
+    top: 16px;
+    right: 20px;
     .song-item {
        
     }
