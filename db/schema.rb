@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127193200) do
+ActiveRecord::Schema.define(:version => 20121127194901) do
 
   create_table "generations", :force => true do |t|
     t.string   "current"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "song_id"
   end
 
   create_table "rules", :force => true do |t|
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20121127193200) do
     t.string   "new_cell"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "song_id"
   end
 
   create_table "songs", :force => true do |t|

@@ -10,5 +10,8 @@
 #
 
 class Song < ActiveRecord::Base
+  has_many :generations
+  has_many :rules
+
   attr_accessible :key, :title
 end
