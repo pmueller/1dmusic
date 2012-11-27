@@ -4,7 +4,18 @@
 
   .song-show-container
     .song-show-content.pull-left
-      Content here
+      .song-show-generations
+        - @song.generations.each do |generation|
+          = div_for generation do
+            = render generation, generation: generation
+      .actions
+        = link_to "#", class: "btn btn-primary" do
+          %i.icon-play.icon-white
+          Play
+        = link_to "#", class: "btn btn-success pull-right" do
+          %i.icon-music.icon-white
+          Step
+
     .song-show-info.pull-right
       .info-field
         = link_to "#", class: "btn btn-danger", id: "open-rulebook-btn" do

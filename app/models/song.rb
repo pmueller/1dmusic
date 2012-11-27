@@ -14,4 +14,10 @@ class Song < ActiveRecord::Base
   has_many :rules
 
   attr_accessible :key, :title
+
+  after_create :initialize_first_generation
+
+  def initialize_first_generation
+    self.generations.create(current: "000000000000")
+  end
 end

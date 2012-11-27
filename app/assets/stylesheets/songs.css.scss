@@ -53,6 +53,13 @@
 
   .song-show-content {
     width: 400px;
+
+    .actions {
+      margin-top: 20px;
+      .btn {
+        width: 150px;
+      }
+    }
   }
 
   .song-show-info {
