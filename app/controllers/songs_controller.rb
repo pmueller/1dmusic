@@ -26,9 +26,9 @@ class SongsController < ApplicationController
     end
   end
 
-  def edit
-    @song = Song.find(params[:id])
-  end
+  # def edit
+  #   @song = Song.find(params[:id])
+  # end
 
   def create
     @song = Song.new(params[:song])
@@ -65,6 +65,21 @@ class SongsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to songs_url }
       format.json { head :no_content }
+    end
+  end
+
+  def step
+    @song = Song.find(params[:id])
+    num_gens = params[:generations_per_step].to_i
+
+    @new_generations = []
+
+    num_gens.times do
+      @new_generations << @song.step
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 end

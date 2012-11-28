@@ -11,13 +11,13 @@
         = link_to "#", class: "btn btn-primary" do
           %i.icon-play.icon-white
           Play
-        = link_to "#", class: "btn btn-success pull-right" do
+        = link_to "#", class: "btn btn-success pull-right", id: "step-btn", data: {sid: @song.id} do
           %i.icon-music.icon-white
           Step
 
     .song-show-info.pull-right
       .info-field
-        = link_to "#", class: "btn btn-danger", id: "open-rulebook-btn" do
+        = link_to "#rulebook-modal", class: "btn btn-danger", id: "open-rulebook-btn", data: { toggle: "modal" } do
           %i.icon-book.icon-white
           Open Rulebook
       .info-field
@@ -25,3 +25,17 @@
       .info-field
         Generations per Step
         = text_field_tag(:generations_per_step, "1")
+      .info-field
+        = link_to "#", class: "btn btn-info" do
+          %i.icon-download-alt.icon-white
+          Download Song
+
+
+#rulebook-modal.modal.hide.fade
+  .modal-header
+    %h3 Define Your Rules
+
+  .modal-body
+  .modal-footer
+    = link_to "Close", "#", class: "btn", data: { dismiss: "modal"} 
+

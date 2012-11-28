@@ -7,6 +7,8 @@ NewMusic::Application.routes.draw do
 
   resources :songs
 
+  match "/songs/:id/step" => "songs#step", via: [:get], as: "song_step"
+
   root to: 'songs#index'
 
   # The priority is based upon order of creation:

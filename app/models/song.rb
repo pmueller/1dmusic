@@ -20,4 +20,26 @@ class Song < ActiveRecord::Base
   def initialize_first_generation
     self.generations.create(current: "000000000000")
   end
+
+  def step
+    current_gen = self.generations.last.current
+    new_gen = ""
+    
+    current_gen.length.times do |i|
+      matched = false
+      self.rules.each do |rule|
+        if rule.match(current_gen, i)
+          new_gen += rule.new_cell
+          matched = true
+          break
+        end
+      end
+
+      if !matched
+        new_gen += current_gen[i]
+      end
+    end
+
+    self.generations.create(current: new_gen)
+  end
 end

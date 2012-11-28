@@ -10,3 +10,11 @@ $(document).ready ->
        data: { song: { key: selected} }
      })
 
+$(document).ready ->
+  $("#step-btn").click (e) ->
+    e.preventDefault()
+    $.ajax("/songs/#{$(@).attr("data-sid")}/step", {
+      type: "GET"
+      dataType: "script"
+      data: { generations_per_step: $("#generations_per_step").val() }
+    })
