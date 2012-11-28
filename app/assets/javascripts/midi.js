@@ -1,3 +1,11 @@
+/*
+ * Original by Sergi Mansilla
+ * Under Creative COmmons Attribution 3.0 License
+ * www.github.com/sergi/jsmidi
+ *
+ * Minor modifcations by Preston Mueller
+ */
+
 /*jslint es5: true, laxbreak: true */
 
 (function (window) {
