@@ -8,7 +8,7 @@
         - @song.generations.each do |generation|
           = render generation, generation: generation
       .actions.clear
-        = link_to "#", class: "btn btn-primary" do
+        = link_to "#", class: "btn btn-primary", id: "play-btn" do
           %i.icon-play.icon-white
           Play
         = link_to "#", class: "btn btn-success pull-right", id: "step-btn", data: {sid: @song.id} do
@@ -38,4 +38,9 @@
   .modal-body
   .modal-footer
     = link_to "Close", "#", class: "btn", data: { dismiss: "modal"} 
+
+
+.hidden_embed
+
+
 

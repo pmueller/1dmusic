@@ -18,3 +18,13 @@ $(document).ready ->
       dataType: "script"
       data: { generations_per_step: $("#generations_per_step").val() }
     })
+
+$(document).ready ->
+  $("#play-btn").click (e) ->
+    e.preventDefault()
+    noteEvents = []
+    ["C4", "E4", "G4"].forEach (note) ->
+      Array.prototype.push.apply(noteEvents, MidiEvent.createNote(note))
+    track = new MidiTrack({ events: noteEvents })
+    song  = MidiWriter({ tracks: [track] })
+    song.play()
