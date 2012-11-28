@@ -18,10 +18,15 @@ class Rule < ActiveRecord::Base
   def match(current_gen, i)
     ret = false
 
-    if (i > 0 && i < 11)
-      if current_gen[i-1] == to_match[0] && current_gen[i] == to_match[1] && current_gen[i+1] == to_match[2]
+    if ( (i - to_match.length / 2) >= 0 && (i + to_match.length / 2) < current_gen.length)
         ret = true
-      end
+       
+        mid_num = to_match.length / 2 
+
+        to_match.length.times do |j|
+          ret = false if to_match[j] != current_gen[i+j-mid_num]
+        end
+
     end
 
     ret
