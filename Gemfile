@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
+gem 'devise'
 gem 'haml'
 
 # Gems used only for assets and not required

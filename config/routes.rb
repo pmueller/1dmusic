@@ -1,4 +1,6 @@
 NewMusic::Application.routes.draw do
+  devise_for :users
+
   resources :generations
 
   resources :rules
