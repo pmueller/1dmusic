@@ -19,7 +19,7 @@ class Song < ActiveRecord::Base
   after_create :initialize_base_rules
 
   def initialize_first_generation
-    self.generations.create(current: "000000000000")
+    self.generations.create(current: "00000000000000")
   end
 
   def initialize_base_rules

@@ -12,7 +12,7 @@
 class Generation < ActiveRecord::Base
   belongs_to :song
 
-  validates_length_of :current, minimum: 12, maximum: 12, allow_blank: false
+  validates_length_of :current, minimum: 14, allow_blank: false
 
   attr_accessible :current
 end

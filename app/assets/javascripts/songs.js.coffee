@@ -1,7 +1,7 @@
 update_tracks = ->
   window.tracks = []
 
-  for i in [1...12]
+  for i in [0...14]
     current_track_notes = []
     $(".cell[data-num=#{i}]").each (index, element) ->
       if element.getAttribute("data-active") == "true"
@@ -13,8 +13,8 @@ update_tracks = ->
 
 
 $(document).ready ->
-  window.keys = { "CM": ["A3", "B3", "C4", "D4", "E4", "F4", "G4", "A5", "B5", "C5", "D5", "E5"],
-  "Cm": [ "Ab4", "Bb4", "C4", "D4", "Eb4", "F4", "G4", "Ab5", "Bb5", "C5", "D5", "Eb5"] }
+  window.keys = { "CM": ["G3", "A4", "B4", "C4", "D4", "E4", "F4", "G4", "A5", "B5", "C5", "D5", "E5", "F5"],
+  "Cm": ["G3", "Ab4", "Bb4", "C4", "D4", "Eb4", "F4", "G4", "Ab5", "Bb5", "C5", "D5", "Eb5", "F5"] }
 
   window.current_key = $("#song_key").children("option:selected").val()
 
