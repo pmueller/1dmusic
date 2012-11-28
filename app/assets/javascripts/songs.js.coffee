@@ -12,7 +12,7 @@ $(document).ready ->
       if element.getAttribute("data-active") == "true"
         Array.prototype.push.apply(current_track_notes, MidiEvent.createNote(window.keys[current_key][i]))
       else
-        Array.prototype.push.apply(current_track_notes, MidiEvent.createNote("C0"))
+        Array.prototype.push.apply(current_track_notes, MidiEvent.createNote("rest"))
 
     window.tracks.push(new MidiTrack({ events: current_track_notes }))
   

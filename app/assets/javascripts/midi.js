@@ -259,6 +259,7 @@ MidiEvent.createNote = function(note, sustained) {
     if (!note) { throw new Error("Note not specified"); }
 
     if (typeof note === "string") {
+      if(note != "rest")
         note = noteTable[note];
     // The pitch is mandatory if the note object is used.
     } else if (!note.pitch) {
@@ -266,7 +267,8 @@ MidiEvent.createNote = function(note, sustained) {
     }
 
     var events = [];
-    events.push(MidiEvent.noteOn(note));
+    if(note != "rest")
+      events.push(MidiEvent.noteOn(note));
 
     // If there is a |sustained| parameter, the note will keep playing until
     // a noteOff event is issued for it.
@@ -276,7 +278,10 @@ MidiEvent.createNote = function(note, sustained) {
         // note at a particular time. If not specified it takes the default
         // value for it.
         // TODO: Is is good to have a default value for it?
+       if(note != "rest")
         events.push(MidiEvent.noteOff(note, note.duration || DEFAULT_DURATION));
+       else
+        events.push(MidiEvent.noteOff(noteTable["C0"], note.duration || DEFAULT_DURATION));
     }
 
     return events;
