@@ -20,16 +20,12 @@
         = link_to "#rulebook-modal", class: "btn btn-danger", id: "open-rulebook-btn", data: { toggle: "modal" } do
           %i.icon-book.icon-white
           Open Rulebook
-      .info-field
-        = select(:song, :key, [["C Major", "CM"], ["C Minor", "Cm"]], {}, { data: { sid: @song.id } } )
-      .info-field
-        Generations per Step
-        = text_field_tag(:generations_per_step, "1")
-      /info-field
-      / = link_to "#", class: "btn btn-info", id: "download-btn" do
-      /   %i.icon-download-alt.icon-white
-      /   Download Song
-
+      .info-field.clearfix.key-info
+        Key
+        = select(:song, :key, [["C Major", "CM"], ["C Minor", "Cm"]], {}, { class: "pull-right", data: { sid: @song.id } } )
+      .info-field.clearfix.gen-per-step-info
+        Generation(s) per Step:
+        = select_tag(:generations_per_step, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5], [10,10], [20, 20], [50, 50]], 0), { class: "pull-right"} )
 
 #rulebook-modal.modal.hide.fade
   .modal-header

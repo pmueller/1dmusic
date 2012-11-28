@@ -38,10 +38,11 @@ $(document).ready ->
 $(document).ready ->
   $("#step-btn").click (e) ->
     e.preventDefault()
+    gens_per_step = $("#generations_per_step").children("option:selected").val()
     $.ajax("/songs/#{$(@).attr("data-sid")}/step", {
       type: "GET"
       dataType: "script"
-      data: { generations_per_step: $("#generations_per_step").val() }
+      data: { generations_per_step: gens_per_step }
     })
 
 $(document).ready ->

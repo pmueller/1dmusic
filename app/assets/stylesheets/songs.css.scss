@@ -70,14 +70,32 @@
 
     .info-field {
       margin: 10px 0;
+      font-size: 1.2em;
 
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, .2);
+
+      line-height: 22px;
+    }
+
+    .key-info {
+      font-size: 1.3em;
+      line-height: 28px;
       select {
-        width: 220px;
+        width: 100px;
+      }
+    }
+
+    .gen-per-step-info {
+      font-size: 1em;
+      line-height: 28px;
+      select {
+        width: 50px;
       }
     }
 
     #open-rulebook-btn {
-      width: 200px;
+      width: 180px;
     }
 
   }
