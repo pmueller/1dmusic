@@ -1,10 +1,5 @@
-$(document).ready ->
-  window.keys = { "CM": ["A3", "B3", "C4", "D4", "E4", "F4", "G4", "A5", "B5", "C5", "D5", "E5"],
-  "Cm": [ "Ab4", "Bb4", "C4", "D4", "Eb4", "F4", "G4", "Ab5", "Bb5", "C5", "D5", "Eb5"] }
-
+update_tracks = ->
   window.tracks = []
-
-  current_key = $("#song_key").children("option:selected").val()
 
   for i in [1...12]
     current_track_notes = []
@@ -15,7 +10,16 @@ $(document).ready ->
         Array.prototype.push.apply(current_track_notes, MidiEvent.createNote("rest"))
 
     window.tracks.push(new MidiTrack({ events: current_track_notes }))
-  
+
+
+$(document).ready ->
+  window.keys = { "CM": ["A3", "B3", "C4", "D4", "E4", "F4", "G4", "A5", "B5", "C5", "D5", "E5"],
+  "Cm": [ "Ab4", "Bb4", "C4", "D4", "Eb4", "F4", "G4", "Ab5", "Bb5", "C5", "D5", "Eb5"] }
+
+  window.current_key = $("#song_key").children("option:selected").val()
+
+  update_tracks()
+    
 
 $(document).ready ->
   $("#song_key").change ->
@@ -27,7 +31,9 @@ $(document).ready ->
        type: "PUT",
        dataType: "JSON",
        data: { song: { key: selected} }
-     })
+    })
+
+    window.current_key = selected
 
 $(document).ready ->
   $("#step-btn").click (e) ->
@@ -41,11 +47,7 @@ $(document).ready ->
 $(document).ready ->
   $("#play-btn").click (e) ->
     e.preventDefault()
-    noteEvents = []
-    ["C4", "E4", "G4"].forEach (note) ->
-      Array.prototype.push.apply(noteEvents, MidiEvent.createNote(note))
-    track = new MidiTrack({ events: noteEvents })
-    track2 = new MidiTrack({ events: noteEvents.reverse() })
+    update_tracks()
     window.song = MidiWriter({ tracks: window.tracks })
     window.song.play()
 
