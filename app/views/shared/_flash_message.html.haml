@@ -1,0 +1,9 @@
+#flash-message
+  -flash.each do |key, value|
+    -key = "error" if key == :warning || key == :alert
+    -key = "info" if key == :notice    
+    -key = "success" if key == :success
+    .alert{class: "alert-#{key}", data: { dismiss: "alert" } }
+      %button{ type: "button", class: "close", data: { dismiss: "alert" } }
+        %i.icon-remove
+      #{value}

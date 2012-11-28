@@ -9,17 +9,12 @@
   %body
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
-        .container#main-header
+        .container
           = link_to "A New Kind of Music", root_path, class: "brand"
 
+
     .main-container
-      .flash-messages
-        .notice
-          = notice
-        .alert
-          = alert
-        .success
-          = success
+      = render "shared/flash_message"
 
       = yield
 
