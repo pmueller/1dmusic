@@ -1,5 +1,6 @@
 class RulesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :song
+  load_and_authorize_resource :rule, through: :song
 
   # GET /rules
   # GET /rules.json
@@ -42,12 +43,14 @@ class RulesController < ApplicationController
   # POST /rules
   # POST /rules.json
   def create
-    @rule = Rule.new(params[:rule])
+    @song = Song.find(params[:song_id])
+    @rule = @song.rules.new(params[:rule])
 
     respond_to do |format|
       if @rule.save
         format.html { redirect_to @rule, notice: 'Rule was successfully created.' }
         format.json { render json: @rule, status: :created, location: @rule }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @rule.errors, status: :unprocessable_entity }
@@ -74,12 +77,15 @@ class RulesController < ApplicationController
   # DELETE /rules/1
   # DELETE /rules/1.json
   def destroy
-    @rule = Rule.find(params[:id])
+    @song = Song.find(params[:song_id])
+    @rule = @song.rules.find(params[:id])
     @rule.destroy
+    @destroyed_id = params[:id]
 
     respond_to do |format|
       format.html { redirect_to rules_url }
       format.json { head :no_content }
+      format.js
     end
   end
 end

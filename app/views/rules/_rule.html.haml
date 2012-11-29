@@ -3,7 +3,7 @@
 = div_for rule, class: editable ? "clearfix clear" : "clearfix first-two" do
   .tomatch-row.clearfix
     - rule.to_match.split("").each_with_index do |rcell, i|
-      .rcell{ data: {rid: rule.id, num: i, active: rcell == "1" ? "true" : "false", editable: "#{editable}"}, class: rcell == "1" ? "rcell_active" : "" }
+      .rcell{ data: {sid: rule.song.id, rid: rule.id, num: i, active: rcell == "1" ? "true" : "false", editable: "#{editable}"}, class: rcell == "1" ? "rcell_active" : "" }
 
   - padding = rule.to_match.length / 2
   .arrow-row.clearfix
@@ -15,7 +15,7 @@
   .new-cell-row.clearfix
     - padding.times do |i|
       .rpadding
-    .rnewcell{ data: {rid: rule.id, active: rule.new_cell == "1" ? "true" : "false" }, class: rule.new_cell == "1" ? "rnewcell_active" : "" }
+    .rnewcell{ data: {sid: rule.song.id, rid: rule.id, active: rule.new_cell == "1" ? "true" : "false" }, class: rule.new_cell == "1" ? "rnewcell_active" : "" }
 
   -if editable
     .rule-size-info
@@ -25,5 +25,5 @@
 
 
     .rule-delete
-      = link_to "#", class: "btn btn-danger", id: "delete-rule-btn" do
+      = link_to "#", class: "btn btn-danger delete-rule-btn", data: { sid: rule.song.id, rid: rule.id } do
         %i.icon-trash.icon-white

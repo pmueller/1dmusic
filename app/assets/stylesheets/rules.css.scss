@@ -7,7 +7,7 @@
   .rule-size-info {
     position: absolute;
     top: 7px;
-    right: 100px;
+    right: 90px;
 
     font-weight: bold;
 
@@ -24,9 +24,9 @@
   .rule-delete {
     position: absolute;
     top: 74px;
-    right: 130px;
+    right: 120px;
 
-    #delete-rule-btn {
+    .delete-rule-btn {
       width: 40px;
       height: 12px
     }
@@ -76,7 +76,7 @@
 
 .first-two {
   float: left;
-  width: 245px;
+  width: 236px;
   padding: 10px;
 
   .rcell {

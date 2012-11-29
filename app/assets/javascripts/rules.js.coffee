@@ -6,6 +6,7 @@ $(document).ready ->
     return false if editable == "false"
 
     rule_id = $(@).data("rid")
+    song_id = $(@).attr("data-sid")
 
     $(@).fadeOut 100, ->
       $(@).toggleClass("rcell_active").fadeIn(200)
@@ -24,7 +25,7 @@ $(document).ready ->
       else
         to_match_str += "0"
       
-    $.ajax("/rules/#{rule_id}", {
+    $.ajax("/songs/#{song_id}/rules/#{rule_id}", {
       type: "PUT",
       dataType: "JSON",
       data: { rule: { to_match: to_match_str} }
@@ -35,6 +36,7 @@ $(document).ready ->
     e.preventDefault()
 
     rule_id = $(@).data("rid")
+    song_id = $(@).attr("data-sid")
 
     $(@).fadeOut 100, ->
       $(@).toggleClass("rnewcell_active").fadeIn(200)
@@ -48,10 +50,24 @@ $(document).ready ->
       $(@).attr("data-active", "true")
       new_cell_str = "1"
 
-    $.ajax("/rules/#{rule_id}", {
+    $.ajax("/songs/#{song_id}/rules/#{rule_id}", {
       type: "PUT",
       dataType: "JSON",
       data: { rule: { new_cell: new_cell_str} }
     })
 
+$(document).ready ->
+  $("#new-rule-btn").click (e) ->
+    $(@).attr("disabled", "disabled")
+    $.ajax("/songs/#{$(@).attr("data-sid")}/rules", {
+      type: "POST",
+      dataType: "script",
+      data: { rule: { to_match: "000", new_cell: "0" } }
+    })
 
+$(document).ready ->
+  $(document).delegate ".delete-rule-btn", "click", (e) ->
+    $.ajax("/songs/#{$(@).attr("data-sid")}/rules/#{$(@).attr("data-rid")}", {
+      type: "DELETE",
+      dataType: "script"
+    })

@@ -3,9 +3,10 @@ NewMusic::Application.routes.draw do
 
   resources :generations
 
-  resources :rules
 
-  resources :songs
+  resources :songs do
+    resources :rules
+  end
 
   match "/songs/:id/step" => "songs#step", via: [:get], as: "song_step"
 
