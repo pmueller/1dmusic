@@ -59,7 +59,7 @@ class GenerationsController < ApplicationController
     @generation = Generation.find(params[:id])
 
     respond_to do |format|
-      if @generation.update_attributes(params[:generation])
+      if @generation.update_generation_string(params[:generation][:current])
         format.html { redirect_to @generation, notice: 'Generation was successfully updated.' }
         format.json { head :no_content }
       else

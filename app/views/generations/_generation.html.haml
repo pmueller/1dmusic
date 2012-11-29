@@ -1,4 +1,4 @@
 = div_for generation do
-  - generation.current.split("").each_with_index do |cell, i|
+  - generation.music_part.split("").each_with_index do |cell, i|
     .cell{ data: {gid: generation.id, num: i, active: cell == "1" ? "true" : "false"}, class: cell == "1" ? "active" : "" }
 

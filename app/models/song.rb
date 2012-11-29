@@ -19,7 +19,7 @@ class Song < ActiveRecord::Base
   after_create :initialize_base_rules
 
   def initialize_first_generation
-    self.generations.create(current: "00000000000000")
+    self.generations.create!(current: Generation.first_generation_string)
   end
 
   def initialize_base_rules
@@ -42,6 +42,7 @@ class Song < ActiveRecord::Base
 
     end
 
-    self.generations.create(current: new_gen)
+    padding  ="0" * (Rule.max_rule_length/2) 
+    self.generations.create(current: "#{padding}#{new_gen}#{padding}")
   end
 end

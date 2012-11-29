@@ -69,7 +69,7 @@ class SongsController < ApplicationController
   end
 
   def step
-    @song = Song.find(params[:id])
+    @song = Song.find(params[:id], include: [ :rules ])
     num_gens = params[:generations_per_step].to_i
 
     @new_generations = []

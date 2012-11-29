@@ -13,6 +13,8 @@
 class Rule < ActiveRecord::Base
   belongs_to :song
 
+  default_scope order('length(to_match) DESC')
+
   attr_accessible :new_cell, :to_match
 
   def match(current_gen, i)
@@ -30,5 +32,9 @@ class Rule < ActiveRecord::Base
     end
 
     ret
+  end
+
+  def self.max_rule_length
+    7
   end
 end
