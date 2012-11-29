@@ -1,0 +1,22 @@
+.devise {
+  width: 230px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    font-weight: bold;
+  }
+  
+  .field {
+    margin: 15px 0;
+  }
+
+  .update-btn {
+    clear: both;
+    width: 230px;
+    margin: 0 auto;
+  }
+}
