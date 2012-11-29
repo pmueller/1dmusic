@@ -6,6 +6,7 @@ module SongsHelper
 
     ret += " Minor" if key[1] == "m"
     ret += " Major" if key[1] == "M"
+    ret += " Harmonic" if key[1] == "h"
 
     ret
   end
