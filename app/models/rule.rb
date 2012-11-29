@@ -35,6 +35,20 @@ class Rule < ActiveRecord::Base
     ret
   end
 
+  def update_neighborhood_size(new_size)
+    current_size = to_match.length
+
+    difference = (new_size - current_size).abs
+    if new_size > current_size
+      padding = "0" * (difference / 2)
+      self.to_match = "#{padding}#{self.to_match}#{padding}"
+    elsif current_size > new_size
+      self.to_match = self.to_match[(difference / 2)...(current_size - difference / 2)]
+    end
+
+    save!
+  end
+
   def self.max_rule_length
     7
   end

@@ -21,7 +21,7 @@
     .rule-size-info
       Neighborhood Size
       %br
-      = select_tag(:neighborhood_size, options_for_select([[3,3], [5,5], [7,7]], rule.to_match.length), {} )
+      = select_tag(:"neighborhood_size_#{rule.id}", options_for_select([[3,3], [5,5], [7,7]], rule.to_match.length), { data: { sid: rule.song.id, rid: rule.id } } )
 
 
     .rule-delete

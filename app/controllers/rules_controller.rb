@@ -61,16 +61,19 @@ class RulesController < ApplicationController
   # PUT /rules/1
   # PUT /rules/1.json
   def update
-    @rule = Rule.find(params[:id])
+    @song = Song.find(params[:song_id])
+    @rule = @song.rules.find(params[:id])
+
+      if params[:rule][:neighborhood_size].present?
+        @rule.update_neighborhood_size(params[:rule][:neighborhood_size].to_i)
+      else
+        @rule.update_attributes(params[:rule])
+      end
 
     respond_to do |format|
-      if @rule.update_attributes(params[:rule])
-        format.html { redirect_to @rule, notice: 'Rule was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @rule.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @rule, notice: 'Rule was successfully updated.' }
+      format.json { head :no_content }
+      format.js
     end
   end
 

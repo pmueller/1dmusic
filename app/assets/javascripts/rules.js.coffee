@@ -58,6 +58,7 @@ $(document).ready ->
 
 $(document).ready ->
   $("#new-rule-btn").click (e) ->
+    e.preventDefault()
     $(@).attr("disabled", "disabled")
     $.ajax("/songs/#{$(@).attr("data-sid")}/rules", {
       type: "POST",
@@ -67,7 +68,17 @@ $(document).ready ->
 
 $(document).ready ->
   $(document).delegate ".delete-rule-btn", "click", (e) ->
+    e.preventDefault()
     $.ajax("/songs/#{$(@).attr("data-sid")}/rules/#{$(@).attr("data-rid")}", {
       type: "DELETE",
       dataType: "script"
+    })
+
+$(document).ready ->
+  $(document).delegate "select[id^=neighborhood_size_]", "change", (e) ->
+    new_size = $(@).children("option:selected").val()
+    $.ajax("/songs/#{$(@).attr("data-sid")}/rules/#{$(@).attr("data-rid")}", {
+      type: "PUT",
+      dataType: "script",
+      data: { rule: { neighborhood_size: new_size } }
     })
