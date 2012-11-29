@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
 
-  check_authorization 
-
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end

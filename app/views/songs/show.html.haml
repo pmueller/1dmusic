@@ -24,6 +24,7 @@
         = link_to "#rulebook-modal", class: "btn btn-danger", id: "open-rulebook-btn", data: { toggle: "modal" } do
           %i.icon-book.icon-white
           Open Rulebook
+
       .info-field.clearfix.key-info
         Key
         = select(:song, :key, [["A Major", "AM"], ["A Minor", "Am"], ["B Major", "BM"], ["B Minor", "Bm"], ["C Major", "CM"], ["C Minor", "Cm"]], {}, { class: "pull-right", data: { sid: @song.id } } )
@@ -31,6 +32,11 @@
         Generation(s) Per Step
         = select_tag(:generations_per_step, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5], [10,10]], 0), { class: "pull-right"} )
 
+      /info-field.clearfix
+      / = link_to "#", class: "btn btn-warning", id: "save-btn" do
+      /   %i.icon-download-alt.icon-white
+      /   Save MIDI
+ 
 #rulebook-modal.modal.hide.fade
   .modal-header
     %h3 Define Your Rules

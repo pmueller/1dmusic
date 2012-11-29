@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @songs = Song.all
+    @songs = current_user.songs
 
     respond_to do |format|
       format.html # index.html.erb
