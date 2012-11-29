@@ -9,7 +9,13 @@ NewMusic::Application.routes.draw do
 
   match "/songs/:id/step" => "songs#step", via: [:get], as: "song_step"
 
-  root to: 'songs#index'
+  authenticated :user do
+    root to: 'songs#index'
+  end
+
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
