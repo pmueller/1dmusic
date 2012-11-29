@@ -7,7 +7,9 @@ $(document).ready ->
     e.preventDefault()
     gen_id = $(@).data("gid")
 
-    $(@).toggleClass("active")
+    $(@).fadeOut 100, ->
+      $(@).toggleClass("active").fadeIn(200)
+
     active = $(@).attr("data-active")
     if active == "true"
       $(@).attr("data-active", "false")
