@@ -1,3 +1,16 @@
+window.rule_margin_fix = ->
+  $(".overall-rule").each ->
+    num = $(@).children(".rule").children(".tomatch-row").children(".rcell").length
+    if num == 3
+      $(@).children(".rule").css("margin-left", "65px")
+    else if num == 5
+      $(@).children(".rule").css("margin-left", "37px")
+    else if num == 7
+      $(@).children(".rule").css("margin-left", "10px")
+
+$(document).ready ->
+  rule_margin_fix()
+
 $(document).ready ->
   $(document).delegate ".rcell", "click", (e) ->
     e.preventDefault()

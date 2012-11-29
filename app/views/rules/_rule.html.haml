@@ -1,29 +1,31 @@
 - editable = rule.to_match.length > 1
 
-= div_for rule, class: editable ? "clearfix clear" : "clearfix first-two" do
-  .tomatch-row.clearfix
-    - rule.to_match.split("").each_with_index do |rcell, i|
-      .rcell{ data: {sid: rule.song.id, rid: rule.id, num: i, active: rcell == "1" ? "true" : "false", editable: "#{editable}"}, class: rcell == "1" ? "rcell_active" : "" }
+.overall-rule{ class: editable ? "clear clearfix" : "clearfix first-two" }
+  = div_for rule, class: editable ? "clearfix clear" : "clearfix first-two" do
+    .tomatch-row.clearfix
+      - rule.to_match.split("").each_with_index do |rcell, i|
+        .rcell{ data: {sid: rule.song.id, rid: rule.id, num: i, active: rcell == "1" ? "true" : "false", editable: "#{editable}"}, class: rcell == "1" ? "rcell_active" : "" }
 
-  - padding = rule.to_match.length / 2
-  .arrow-row.clearfix
-    - padding.times do |i|
-      .rpadding
-    .rule-arrow.pull-left
-      %i.icon-arrow-down
-    
-  .new-cell-row.clearfix
-    - padding.times do |i|
-      .rpadding
-    .rnewcell{ data: {sid: rule.song.id, rid: rule.id, active: rule.new_cell == "1" ? "true" : "false" }, class: rule.new_cell == "1" ? "rnewcell_active" : "" }
+    - padding = rule.to_match.length / 2
+    .arrow-row.clearfix
+      - padding.times do |i|
+        .rpadding
+      .rule-arrow.pull-left
+        %i.icon-arrow-down
+      
+    .new-cell-row.clearfix
+      - padding.times do |i|
+        .rpadding
+      .rnewcell{ data: {sid: rule.song.id, rid: rule.id, active: rule.new_cell == "1" ? "true" : "false" }, class: rule.new_cell == "1" ? "rnewcell_active" : "" }
 
   -if editable
-    .rule-size-info
-      Neighborhood Size
-      %br
-      = select_tag(:"neighborhood_size_#{rule.id}", options_for_select([[3,3], [5,5], [7,7]], rule.to_match.length), { data: { sid: rule.song.id, rid: rule.id } } )
+    .rule-info
+      .rule-size-info
+        Neighborhood Size
+        %br
+        = select_tag(:"neighborhood_size_#{rule.id}", options_for_select([[3,3], [5,5], [7,7]], rule.to_match.length), { data: { sid: rule.song.id, rid: rule.id } } )
 
 
-    .rule-delete
-      = link_to "#", class: "btn btn-danger delete-rule-btn", data: { sid: rule.song.id, rid: rule.id } do
-        %i.icon-trash.icon-white
+      .rule-delete
+        = link_to "#", class: "btn btn-danger delete-rule-btn", data: { sid: rule.song.id, rid: rule.id } do
+          %i.icon-trash.icon-white

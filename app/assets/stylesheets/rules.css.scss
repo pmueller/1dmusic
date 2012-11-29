@@ -1,35 +1,46 @@
-.rule {
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
-  margin-bottom: 10px;
-  padding: 10px 100px;
+.overall-rule {
   position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
 
-  .rule-size-info {
-    position: absolute;
-    top: 7px;
-    right: 90px;
+.rule {
+  margin-bottom: 10px;
+  padding: 10px 30px;
+  position: relative;
+}
 
-    font-weight: bold;
+.rule-info {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
 
-    select {
-      width: 50px;
-      height: 18px;
-      position: relative;
-      top: 4px;
-      right: -25px;
-      margin-left: 5px;
-    }
+.rule-size-info {
+  position: relative;
+  top: 10px;
+  right: 64px;
+
+  font-weight: bold;
+
+  select {
+    width: 50px;
+    height: 18px;
+    position: relative;
+    top: 3px;
+    left: 25px;
+    margin-left: 5px;
   }
+}
 
-  .rule-delete {
-    position: absolute;
-    top: 74px;
-    right: 120px;
+.rule-delete {
 
-    .delete-rule-btn {
-      width: 40px;
-      height: 12px
-    }
+  position: relative;
+  top: 29px;
+  right: 38px;
+
+  .delete-rule-btn {
+    width: 40px;
+    height: 12px
   }
 }
 
