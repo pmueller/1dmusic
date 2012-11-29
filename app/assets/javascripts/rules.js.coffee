@@ -2,6 +2,9 @@ $(document).ready ->
   $(document).delegate ".rcell", "click", (e) ->
     e.preventDefault()
 
+    editable = $(@).attr("data-editable")
+    return false if editable == "false"
+
     rule_id = $(@).data("rid")
 
     $(@).fadeOut 100, ->
