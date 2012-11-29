@@ -37,12 +37,15 @@
       /   %i.icon-download-alt.icon-white
       /   Save MIDI
  
-#rulebook-modal.modal.hide.fade
-  .modal-header
-    %h3 Define Your Rules
+#rulebook-modal.modal.hide.fade.clearfix
+  .modal-header.clearfix
+    %h3
+      Define Your Rules
+      = link_to "#", class: "pull-right", data: { dismiss: "modal"} do
+        %i.icon-remove
 
-  .modal-body
+
+  .modal-body.clearfix
   .modal-footer
-    = link_to "Close", "#", class: "btn", data: { dismiss: "modal"} 
-
+    New Rule
 
