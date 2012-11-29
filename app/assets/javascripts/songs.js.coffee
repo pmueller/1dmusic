@@ -27,6 +27,11 @@ $(document).ready ->
   update_tracks()
     
 
+update_notes = ->
+  for i in [0...window.keys[current_key].length]
+    $(".key-note[data-keynum=#{i}]").hide().text("#{window.keys[window.current_key][i]}").fadeIn(200)
+
+
 $(document).ready ->
   $("#song_key").change ->
     selected = $(@).children("option:selected").val()
@@ -41,9 +46,15 @@ $(document).ready ->
 
     window.current_key = selected
 
+    update_notes()
+
+$(document).ready ->
+  update_notes()
+
 $(document).ready ->
   $("#step-btn").click (e) ->
     e.preventDefault()
+    $(@).attr("disabled", "disabled")
     gens_per_step = $("#generations_per_step").children("option:selected").val()
     $.ajax("/songs/#{$(@).attr("data-sid")}/step", {
       type: "GET"
@@ -54,6 +65,10 @@ $(document).ready ->
 $(document).ready ->
   $("#play-btn").click (e) ->
     e.preventDefault()
+    $(@).attr("disabled", "disabled")
+    setTimeout ->
+      $("#play-btn").removeAttr("disabled")
+    , 1000
     update_tracks()
     window.song = MidiWriter({ tracks: window.tracks })
     window.song.play()

@@ -4,6 +4,10 @@
 
   .song-show-container
     .song-show-content.pull-left
+      .song-show-keynotes.clearfix
+        - 14.times do |i|
+          .key-note{ data: { keynum: i } }
+
       .song-show-generations.clearfix
         - @song.generations.each do |generation|
           = render generation, generation: generation

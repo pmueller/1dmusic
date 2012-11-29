@@ -1,4 +1,5 @@
 <% @new_generations.each do |generation| %>
   $(".song-show-generations").append($("<%= j render generation %>").hide().fadeIn(300));
+  $("#step-btn").removeAttr("disabled");
 <% end %>
 
