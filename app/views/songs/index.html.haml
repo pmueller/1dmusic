@@ -5,6 +5,9 @@
       New Song
 
   .songs-list.clear
-    - @songs.each do |song|
-      = link_to song do
-        = render song
+    - if @songs.present?
+      - @songs.each do |song|
+        = link_to song do
+          = render song
+    - else
+      %h2 You don't have any songs yet :(

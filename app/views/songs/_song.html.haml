@@ -2,4 +2,4 @@
   %h1= song.title
   .song-info.pull-right
     .song-item.label.label-warning= pretty_key song.key
-    .song-item.label.label-success= "#{song.generations.size} generations"
+    .song-item.label.label-success= "#{pluralize(song.generations.size, "generation")}"
