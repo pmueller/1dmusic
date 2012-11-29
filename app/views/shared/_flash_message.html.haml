@@ -4,6 +4,6 @@
     -key = "info" if key == :notice    
     -key = "success" if key == :success
     .alert{class: "alert-#{key}", data: { dismiss: "alert" } }
-      %button{ type: "button", class: "close", data: { dismiss: "alert" } }
+      = link_to "#", class: "close", data: { dismiss: "alert" } do
         %i.icon-remove
       #{value}
