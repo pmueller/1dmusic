@@ -12,6 +12,7 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    @rules = @song.rules.old_first
 
     respond_to do |format|
       format.html # show.html.erb

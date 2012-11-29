@@ -34,7 +34,7 @@ class Song < ActiveRecord::Base
     
     current_gen.length.times do |i|
 
-      self.rules.each do |rule|
+      self.rules.long_first.each do |rule|
         if rule.match(current_gen, i)
           new_gen += rule.new_cell
           break

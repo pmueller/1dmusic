@@ -1,0 +1,17 @@
+= div_for rule, class: 'clearfix' do
+  .tomatch-row.clearfix
+    - rule.to_match.split("").each_with_index do |rcell, i|
+      .rcell{ data: {rid: rule.id, num: i, active: rcell == "1" ? "true" : "false"}, class: rcell == "1" ? "rcell_active" : "" }
+
+  - padding = rule.to_match.length / 2
+  .arrow-row.clearfix
+    - padding.times do |i|
+      .rpadding
+    .rule-arrow.pull-left
+      %i.icon-arrow-down
+    
+  .new-cell-row.clearfix
+    - padding.times do |i|
+      .rpadding
+    .rnewcell{ data: {rid: rule.id, active: rule.new_cell == "1" ? "true" : "false"}, class: rule.new_cell == "1" ? "rnewcell_active" : "" }
+

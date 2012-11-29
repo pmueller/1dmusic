@@ -40,12 +40,17 @@
 #rulebook-modal.modal.hide.fade.clearfix
   .modal-header.clearfix
     %h3
-      Define Your Rules
+      Define Your Cell Rules
       = link_to "#", class: "pull-right", data: { dismiss: "modal"} do
         %i.icon-remove
 
-
   .modal-body.clearfix
-  .modal-footer
-    New Rule
+    .rules-list
+      - @rules.each do |rule|
+        = render rule
+
+  .modal-footer.clearfix
+    = link_to "#", class: "btn btn-success", id: "new-rule-btn" do
+      %i.icon-plus.icon-white
+      New Rule
 

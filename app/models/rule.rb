@@ -13,7 +13,8 @@
 class Rule < ActiveRecord::Base
   belongs_to :song
 
-  default_scope order('length(to_match) DESC')
+  scope :long_first, order('length(to_match) DESC')
+  scope :old_first, order("created_at ASC")  
 
   attr_accessible :new_cell, :to_match
 
