@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128225525) do
+ActiveRecord::Schema.define(:version => 20121129042135) do
 
   create_table "generations", :force => true do |t|
     t.text     "current",    :limit => 255
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20121128225525) do
     t.string   "key",        :default => "CM"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

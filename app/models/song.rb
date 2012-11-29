@@ -12,6 +12,7 @@
 class Song < ActiveRecord::Base
   has_many :generations
   has_many :rules
+  belongs_to :user
 
   attr_accessible :key, :title
 

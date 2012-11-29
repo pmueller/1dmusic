@@ -29,7 +29,7 @@
         = select(:song, :key, [["A Major", "AM"], ["A Minor", "Am"], ["B Major", "BM"], ["B Minor", "Bm"], ["C Major", "CM"], ["C Minor", "Cm"]], {}, { class: "pull-right", data: { sid: @song.id } } )
       .info-field.clearfix.gen-per-step-info
         Generation(s) Per Step
-        = select_tag(:generations_per_step, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5], [10,10], [20, 20], [50, 50]], 0), { class: "pull-right"} )
+        = select_tag(:generations_per_step, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5], [10,10]], 0), { class: "pull-right"} )
 
 #rulebook-modal.modal.hide.fade
   .modal-header

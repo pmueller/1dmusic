@@ -1,4 +1,6 @@
 class RulesController < ApplicationController
+  load_and_authorize_resource
+
   # GET /rules
   # GET /rules.json
   def index

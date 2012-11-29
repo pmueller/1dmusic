@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @songs = Song.all
 
@@ -31,7 +33,7 @@ class SongsController < ApplicationController
   # end
 
   def create
-    @song = Song.new(params[:song])
+    @song = current_user.songs.new(params[:song])
 
     respond_to do |format|
       if @song.save

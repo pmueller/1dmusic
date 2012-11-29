@@ -1,4 +1,6 @@
 class GenerationsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /generations
   # GET /generations.json
   def index
