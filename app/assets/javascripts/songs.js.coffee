@@ -85,13 +85,6 @@ $(document).ready ->
     window.song.play()
 
 $(document).ready ->
-  $("#save-btn").click (e) ->
-    e.preventDefault()
-    update_tracks()
-    window.song = MidiWriter({ tracks: window.tracks })
-    window.song.save()
-
-$(document).ready ->
   $("#download-btn").click (e) ->
     e.preventDefault()
     window.song = MidiWriter({ tracks: window.tracks })
