@@ -48,11 +48,11 @@ $(document).ready ->
 
     if selected == "pitch"
       $(".key-note").hide()
-      $("#song_key").attr("disabled", "disabled")
+      $(".key-info").hide()
 
     if selected == "note"
       $(".key-note").show()
-      $("#song_key").removeAttr("disabled")
+      $(".key-info").show()
 
 $(document).ready ->
   $("#song_key").change ->
