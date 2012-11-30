@@ -11,10 +11,17 @@
       .song-show-generations.clearfix
         - @song.generations.each do |generation|
           = render generation, generation: generation
+
       .actions.clear
         = link_to "#", class: "btn btn-primary", id: "play-btn" do
           %i.icon-play.icon-white
           Play
+
+        = link_to "#", class: "btn btn-primary", id: "play-2-btn" do
+          %i.icon-play.icon-white
+          Play 2
+
+
         = link_to "#", class: "btn btn-success pull-right", id: "step-btn", data: {sid: @song.id} do
           %i.icon-music.icon-white
           Step

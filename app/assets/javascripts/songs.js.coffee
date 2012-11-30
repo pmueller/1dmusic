@@ -89,3 +89,34 @@ $(document).ready ->
     e.preventDefault()
     window.song = MidiWriter({ tracks: window.tracks })
     window.song.save()
+
+$(document).ready ->
+  $("#play-2-btn").click (e) ->
+    e.preventDefault()
+    $(@).attr("disabled", "disabled")
+    setTimeout ->
+      $("#play-2-btn").removeAttr("disabled")
+    , 1000
+    n_events = []
+    $(".generation").each  ->
+      gen_str = ""
+      cells = $(@).children(".cell")
+      cells.each (index, element) ->
+        active = element.getAttribute("data-active")
+        if active == "true"
+          gen_str += "1"
+        else
+          gen_str += "0"
+      gen_in_bin = parseInt(gen_str, 2)
+      pitch = (gen_in_bin % 127 ) + 1
+      duration = gen_in_bin % 64
+
+      Array.prototype.push.apply(n_events, MidiEvent.createNote({ pitch: pitch }))
+
+    t = new MidiTrack({ events: n_events })
+    s = MidiWriter({ tracks: [t] })
+    s.play()
+
+
+  
+
