@@ -43,7 +43,6 @@ class Song < ActiveRecord::Base
 
     end
 
-    padding  ="0" * (Rule.max_rule_length/2) 
-    self.generations.create(current: "#{padding}#{new_gen}#{padding}")
+    self.generations.create(current: new_gen)
   end
 end

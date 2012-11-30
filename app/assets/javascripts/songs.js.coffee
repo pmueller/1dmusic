@@ -46,7 +46,7 @@ $(document).ready ->
   $("#mapping").change ->
     selected = $(@).children("option:selected").val()
 
-    if selected == "pitch"
+    if selected == "pitch" || selected == "sum"
       $(".key-note").hide()
       $(".key-info").hide()
 
@@ -119,6 +119,29 @@ $(document).ready ->
       t = new MidiTrack({ events: n_events })
       s = MidiWriter({ tracks: [t] })
       s.play()
+
+    if mapping_type == "sum"
+      n_events = []
+      bin_total = 0
+      $(".generation").each  ->
+        gen_str = ""
+        cells = $(@).children(".cell")
+        cells.each (index, element) ->
+          active = element.getAttribute("data-active")
+          if active == "true"
+            gen_str += "1"
+          else
+            gen_str += "0"
+        bin_total += parseInt(gen_str, 2)
+        pitch = (bin_total % 127 ) + 1
+
+        Array.prototype.push.apply(n_events, MidiEvent.createNote({ pitch: pitch }))
+
+      t = new MidiTrack({ events: n_events })
+      s = MidiWriter({ tracks: [t] })
+      s.play()
+
+
 
 $(document).ready ->
   $("#download-btn").click (e) ->

@@ -33,7 +33,7 @@
 
       .info-field.clearfix.mapping-info
         Mapping
-        = select_tag(:mapping, options_for_select([["Cell to note", "note"], ["Cell to pitch", "pitch"]], 0), { class: "pull-right" })
+        = select_tag(:mapping, options_for_select([["Cell to note", "note"], ["Cell to pitch", "pitch"], ["Cell to pitch with binary sum", "sum"]], 0), { class: "pull-right" })
 
       .info-field.clearfix.gen-per-step-info
         Generation(s) Per Step

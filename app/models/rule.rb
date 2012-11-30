@@ -19,17 +19,28 @@ class Rule < ActiveRecord::Base
   attr_accessible :new_cell, :to_match
 
   def match(current_gen, i)
-    ret = false
+    len = self.to_match.length
+    chars_to_match = []
 
-    if ( (i - to_match.length / 2) >= 0 && (i + to_match.length / 2) < current_gen.length)
-        ret = true
-       
-        mid_num = to_match.length / 2 
+    len.times do |c_len|
+      # center rule around i
+      c_len = c_len - len / 2
+      num_to_add = c_len + i
 
-        to_match.length.times do |j|
-          ret = false if to_match[j] != current_gen[i+j-mid_num]
-        end
+      num_to_add  = current_gen.length + num_to_add if i < 0
+      num_to_add = num_to_add - current_gen.length if num_to_add >= current_gen.length
 
+      chars_to_match << current_gen[num_to_add]
+    end
+
+    ret = true
+
+    chars_to_match.each_with_index do |ch, i|
+
+      if to_match[i] != ch
+        ret = false
+        break
+      end
     end
 
     ret
