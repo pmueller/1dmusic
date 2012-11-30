@@ -17,11 +17,6 @@
           %i.icon-play.icon-white
           Play
 
-        = link_to "#", class: "btn btn-primary", id: "play-2-btn" do
-          %i.icon-play.icon-white
-          Play 2
-
-
         = link_to "#", class: "btn btn-success pull-right", id: "step-btn", data: {sid: @song.id} do
           %i.icon-music.icon-white
           Step
@@ -35,9 +30,14 @@
       .info-field.clearfix.key-info
         Key
         = select(:song, :key, [["A Major", "AM"], ["A Minor", "Am"], ["A Harmonic", "Ah"], ["B Major", "BM"], ["B Minor", "Bm"], ["C Major", "CM"], ["C Minor", "Cm"], ["D Major", "DM"], ["D Minor", "Dm"], ["E Major", "EM"], ["E Minor", "Em"], ["F Major", "FM"], ["F Minor", "Fm"], ["G Major", "GM"], ["G Minor", "Gm"] ], {}, { class: "pull-right", data: { sid: @song.id } } )
+
+      .info-field.clearfix.mapping-info
+        Mapping
+        = select_tag(:mapping, options_for_select([["Cell to note", "note"], ["Cell to pitch", "pitch"]], 0), { class: "pull-right" })
+
       .info-field.clearfix.gen-per-step-info
         Generation(s) Per Step
-        = select_tag(:generations_per_step, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5], [10,10]], 0), { class: "pull-right"} )
+        = select_tag(:generations_per_step, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5], [10,10], [20, 20]], 0), { class: "pull-right"} )
 
 #rulebook-modal.modal.hide.fade.clearfix
   .modal-header.clearfix

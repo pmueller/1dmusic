@@ -42,6 +42,17 @@ update_notes = ->
   for i in [0...window.keys[current_key].length]
     $(".key-note[data-keynum=#{i}]").hide().text("#{window.keys[window.current_key][i]}").fadeIn(200)
 
+$(document).ready ->
+  $("#mapping").change ->
+    selected = $(@).children("option:selected").val()
+
+    if selected == "pitch"
+      $(".key-note").hide()
+      $("#song_key").attr("disabled", "disabled")
+
+    if selected == "note"
+      $(".key-note").show()
+      $("#song_key").removeAttr("disabled")
 
 $(document).ready ->
   $("#song_key").change ->
@@ -80,43 +91,38 @@ $(document).ready ->
     setTimeout ->
       $("#play-btn").removeAttr("disabled")
     , 1000
-    update_tracks()
-    window.song = MidiWriter({ tracks: window.tracks })
-    window.song.play()
+
+    mapping_type = $("#mapping").children("option:selected").val()
+
+    if mapping_type == "note"
+      update_tracks()
+      window.song = MidiWriter({ tracks: window.tracks })
+      window.song.play()
+    
+    if mapping_type == "pitch"
+      n_events = []
+      $(".generation").each  ->
+        gen_str = ""
+        cells = $(@).children(".cell")
+        cells.each (index, element) ->
+          active = element.getAttribute("data-active")
+          if active == "true"
+            gen_str += "1"
+          else
+            gen_str += "0"
+        gen_in_bin = parseInt(gen_str, 2)
+        pitch = (gen_in_bin % 127 ) + 1
+        duration = gen_in_bin % 64
+
+        Array.prototype.push.apply(n_events, MidiEvent.createNote({ pitch: pitch }))
+
+      t = new MidiTrack({ events: n_events })
+      s = MidiWriter({ tracks: [t] })
+      s.play()
 
 $(document).ready ->
   $("#download-btn").click (e) ->
     e.preventDefault()
     window.song = MidiWriter({ tracks: window.tracks })
     window.song.save()
-
-$(document).ready ->
-  $("#play-2-btn").click (e) ->
-    e.preventDefault()
-    $(@).attr("disabled", "disabled")
-    setTimeout ->
-      $("#play-2-btn").removeAttr("disabled")
-    , 1000
-    n_events = []
-    $(".generation").each  ->
-      gen_str = ""
-      cells = $(@).children(".cell")
-      cells.each (index, element) ->
-        active = element.getAttribute("data-active")
-        if active == "true"
-          gen_str += "1"
-        else
-          gen_str += "0"
-      gen_in_bin = parseInt(gen_str, 2)
-      pitch = (gen_in_bin % 127 ) + 1
-      duration = gen_in_bin % 64
-
-      Array.prototype.push.apply(n_events, MidiEvent.createNote({ pitch: pitch }))
-
-    t = new MidiTrack({ events: n_events })
-    s = MidiWriter({ tracks: [t] })
-    s.play()
-
-
-  
 
