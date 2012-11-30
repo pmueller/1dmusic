@@ -1,2 +1,2 @@
-$("#rule_<%= @rule.id %>").replaceWith("<%= j render @rule %>");
+$(".overall-rule[data-rid=<%= @rule.id %>]").replaceWith("<%= j render @rule %>");
 rule_margin_fix();
