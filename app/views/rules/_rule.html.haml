@@ -1,6 +1,6 @@
 - editable = rule.to_match.length > 1
 
-.overall-rule{ class: editable ? "clear clearfix" : "clearfix first-two" }
+.overall-rule{ class: editable ? "clear clearfix" : "clearfix first-two", data: {rid: rule.id}}
   = div_for rule, class: editable ? "clearfix clear" : "clearfix first-two" do
     .tomatch-row.clearfix
       - rule.to_match.split("").each_with_index do |rcell, i|
