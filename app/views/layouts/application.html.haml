@@ -2,8 +2,13 @@
 %html
   %head
     %title 1D Music
+
+    %link{ href: "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.4/css/bootstrap.min.css", rel: "stylesheet" }
     = stylesheet_link_tag    "application", :media => "all"
+
     = javascript_include_tag "application"
+    %script{ type: "text/javascript", src: "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.4/bootstrap.min.js" }
+
     = csrf_meta_tags
 
   %body
@@ -35,7 +40,7 @@
                   %li
                     =link_to destroy_user_session_path, method: :delete do
                       %i.icon-off
-                      Log Out 
+                      Log Out
 
 
     .main-container

@@ -2,6 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+play_midi_b64_string = (b64String)->
+  if b64String.indexOf("data:audio/midi;base64,") == -1
+    b64String = "data:audio/midi;base64,#{b64String}"
+  MIDI.loadPlugin(
+    instrument: "acoustic_grand_piano"
+    onsuccess: () =>
+      MIDI.Player.loadFile(b64String, () ->
+        MIDI.Player.start()
+      )
+  )
+
 $(document).ready ->
   $(document).delegate ".cell", "click", (e) ->
     e.preventDefault()
@@ -22,7 +33,7 @@ $(document).ready ->
       Array.prototype.push.apply(e, MidiEvent.createNote(note))
       t = new MidiTrack({ events: e })
       s = MidiWriter({ tracks: [t] })
-      s.play()
+      play_midi_b64_string(s.b64)
 
 
     gen_str = ""

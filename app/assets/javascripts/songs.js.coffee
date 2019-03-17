@@ -11,6 +11,17 @@ update_tracks = ->
 
     window.tracks.push(new MidiTrack({ events: current_track_notes }))
 
+play_midi_b64_string = (b64String)->
+  if b64String.indexOf("data:audio/midi;base64,") == -1
+    b64String = "data:audio/midi;base64,#{b64String}"
+  MIDI.loadPlugin(
+    instrument: "acoustic_grand_piano"
+    onsuccess: () =>
+      MIDI.Player.loadFile(b64String, () ->
+        MIDI.Player.start()
+      )
+  )
+
 
 $(document).ready ->
   window.keys = {
@@ -97,7 +108,7 @@ $(document).ready ->
     if mapping_type == "note"
       update_tracks()
       window.song = MidiWriter({ tracks: window.tracks })
-      window.song.play()
+      play_midi_b64_string(window.song.b64)
     
     if mapping_type == "pitch"
       n_events = []
@@ -118,7 +129,7 @@ $(document).ready ->
 
       t = new MidiTrack({ events: n_events })
       s = MidiWriter({ tracks: [t] })
-      s.play()
+      play_midi_b64_string(s.b64)
 
     if mapping_type == "sum"
       n_events = []
@@ -139,7 +150,7 @@ $(document).ready ->
 
       t = new MidiTrack({ events: n_events })
       s = MidiWriter({ tracks: [t] })
-      s.play()
+      play_midi_b64_string(s.b64)
 
 
 

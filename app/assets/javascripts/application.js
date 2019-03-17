@@ -12,5 +12,23 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap
+//= require midi/shim/Base64
+//= require midi/shim/Base64binary
+//= require midi/shim/WebAudioAPI
+//= require midi/shim/WebMIDIAPI
+//= require jasmid/stream
+//= require jasmid/midifile
+//= require jasmid/replayer
+//= require midi/midi/audioDetect
+//= require midi/midi/audioDetect
+//= require midi/midi/gm
+//= require midi/midi/loader
+//= require midi/midi/plugin.audiotag
+//= require midi/midi/plugin.webaudio
+//= require midi/midi/plugin.webmidi
+//= require midi/midi/player
+//= require midi/midi/synesthesia
+//= require midi/util/dom_request_script
+//= require midi/util/dom_request_xhr
 //= require_tree .
