@@ -1,20 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.22.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '< 1.4.0'
 end
 
 group :production do
   gem 'pg'
 end
 
-gem 'twitter-bootstrap-rails'
-gem 'devise'
+gem 'devise', '< 3'
 gem 'haml'
 gem 'cancan'
 
