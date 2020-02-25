@@ -11,7 +11,7 @@ rails server
 # app should be available at localhost:3000
 ```
 
-The latest version is also on heroku at one-d-music.herokuapp.com
+The latest version is also on heroku at `one-d-music.herokuapp.com`
 
 ## Browsers
 I've only tested the midi capability on Chrome and Firefox. Might not work on other browsers, especially those that don't support ogg
